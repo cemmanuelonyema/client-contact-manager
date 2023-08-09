@@ -1,9 +1,15 @@
-import React from 'react'
+//package import
+import React, { useState, useContext } from "react";
+//file import
+import ContactList from "./components/contactList/ContactList";
 
-const Contacts = () => {
+const Contacts: React.FC = () => {
   return (
-    <div>Contacts</div>
-  )
-}
-
-export default Contacts
+    <main>
+      <div className={`container`}>
+        <ContactList />
+      </div>
+    </main>
+  );
+};
+export default Contacts;
