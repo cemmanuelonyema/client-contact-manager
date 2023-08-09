@@ -1,21 +1,13 @@
-/***************************** */
-//Import statements
-/***************************** */
-//package import
-import { useMemo, useContext } from "react";
-
-//file import
+import React from "react";
 import styles from "./ContactCard.module.scss";
-// import { Contact as ContactModel } from '../../../../../model/index';
-// import { formatDate } from '../../../../../utilities/formatDate';
-// import { ContactContext, GlobalContext } from '../../../../../context';
+import { ContactModel } from "../../../../../model";
 
 /***************************** */
 //Interface
 /***************************** */
-// interface ContactCardProps {
-//       contact: ContactModel;
-// }
+interface ContactCardProps {
+  contact: ContactModel;
+}
 
 /***************************** */
 //component's definition
@@ -36,45 +28,15 @@ const ContactCard = ({ contact }: ContactCardProps) => {
     updatedAt,
   } = contact;
 
-  const { toggleModal } = useContext(GlobalContext);
-  const { deleteContact, setCurrentContact } = useContext(ContactContext);
-  //----------------------------------------------------//
-  //Body - do something with the component's data
-  let createdUpdatedText: string = "";
-  const cardFooterText =
-    updatedAt > createdAt
-      ? (createdUpdatedText = `Updated At: ${useMemo(
-          () => formatDate(updatedAt),
-          [updatedAt]
-        )}`)
-      : (createdUpdatedText = `Created At: ${useMemo(
-          () => formatDate(createdAt),
-          [createdAt]
-        )}`);
-
-  //------------------------------------------------//
-  //Guard clauses - prevent rendering if needed
-
-  //------------------------------------------//
-  //main result of the component returned
-  const handleEdit = () => {
-    toggleModal();
-    setCurrentContact(contact);
-  };
-  const handleDelete = async () => {
-    console.log("delete", _id);
-    deleteContact(_id);
-  };
-
   return (
     <li className={styles.contactCard}>
       <div className={styles.btns}>
-        <div className={styles.edit} onClick={handleEdit}>
+        {/* <div className={styles.edit} onClick={handleEdit}>
           <p>edit</p>
-        </div>
-        <div className={styles.delete} onClick={handleDelete}>
+        </div> */}
+        {/* <div className={styles.delete} onClick={handleDelete}>
           <p>del</p>
-        </div>
+        </div> */}
       </div>
       <article>
         <div>
@@ -95,9 +57,7 @@ const ContactCard = ({ contact }: ContactCardProps) => {
           <span>Facebook</span>
         </div>
       </article>
-      <footer>
-        <span>{cardFooterText}</span>
-      </footer>
+      <footer>{/* <span>{cardFooterText}</span> */}</footer>
     </li>
   );
 };

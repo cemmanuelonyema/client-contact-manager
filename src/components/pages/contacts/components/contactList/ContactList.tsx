@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./ContactList.module.scss";
-import ContactCard from "../contactCard/ContactCard";
 import Pagination from "../../../../utilities/pagination/Pagination";
+import ContactCard from "../contactCard/ContactCard";
+import { ContactModel } from "../../../../../model";
 
 const ContactList: React.FC = () => {
   //variables and hooks
@@ -456,8 +457,8 @@ const ContactList: React.FC = () => {
   return (
     <>
       <ul className={styles.contactList}>
-        {currentItems.map((contact) => (
-          <li>{contact.name}</li>
+        {currentItems.map((contact: ContactModel) => (
+          <ContactCard contact={contact} key={contact._id} />
         ))}
       </ul>
       <Pagination
