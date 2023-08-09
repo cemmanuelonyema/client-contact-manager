@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./ContactList.module.scss";
 import ContactCard from "../contactCard/ContactCard";
+import Pagination from "../../../../utilities/pagination/Pagination";
 
 const ContactList: React.FC = () => {
   //variables and hooks
@@ -438,21 +439,33 @@ const ContactList: React.FC = () => {
       updatedAt: "2023-02-27T01:00:09.120Z",
     },
   ];
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 9;
+  const indexOfLastPage = currentPage * itemsPerPage;
+  const indexOfFirstPage = indexOfLastPage - itemsPerPage;
+  const currentItems = contacts.slice(indexOfFirstPage, indexOfLastPage);
+  const totalPosts = contacts.length;
+  const numOfPages = Math.ceil(totalPosts / itemsPerPage);
+  console.log(contacts);
+
+  //functions
+  const prevPage = () => setCurrentPage(currentPage - 1);
+  const nextPage = () => setCurrentPage(currentPage + 1);
 
   //render
   return (
     <>
       <ul className={styles.contactList}>
-        {contacts.map((contact) => (
+        {currentItems.map((contact) => (
           <li>{contact.name}</li>
         ))}
       </ul>
-      {/* <Pagination
-                        currentPage={currentPage}
-                        numOfPages={numOfPages}
-                        prevPage={prevPage}
-                        nextPage={nextPage}
-                  /> */}
+      <Pagination
+        currentPage={currentPage}
+        numOfPages={numOfPages}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
     </>
   );
 };
