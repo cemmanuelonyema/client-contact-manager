@@ -58,7 +58,7 @@ const Signup = () => {
           <h1>Welcome </h1>
           <p>Sign up with Contact Manager</p>
         </div>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor=" username">
               username

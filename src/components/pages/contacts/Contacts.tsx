@@ -1,5 +1,5 @@
 //package import
-import React, { useState, useContext } from "react";
+import React from "react";
 //file import
 import { Container } from "../../utilities/container/Container";
 import ContactList from "./components/contactList/ContactList";
