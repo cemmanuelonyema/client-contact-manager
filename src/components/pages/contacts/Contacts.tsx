@@ -1,14 +1,15 @@
 //package import
 import React, { useState, useContext } from "react";
 //file import
+import { Container } from "../../utilities/container/Container";
 import ContactList from "./components/contactList/ContactList";
 
 const Contacts: React.FC = () => {
   return (
     <main>
-      <div className={`container`}>
+      <Container>
         <ContactList />
-      </div>
+      </Container>
     </main>
   );
 };
