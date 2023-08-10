@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import styles from "./ContactList.module.scss";
 import Pagination from "../../../../utilities/pagination/Pagination";
 import ContactCard from "../contactCard/ContactCard";

@@ -51,7 +51,7 @@ const Login = () => {
           <h1>Welcome back !</h1>
           <p>Continue with Contact Manager</p>
         </div>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label htmlFor="username">Username</label>
             <input
