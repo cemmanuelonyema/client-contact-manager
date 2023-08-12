@@ -31,18 +31,6 @@ const ContactCard = ({ contact }: ContactCardProps) => {
 
   //----------------------------------------------------//
   //Body - do something with the component's data
-  let updatedText: string = "";
-
-  const cardFooterText =
-    updatedAt > createdAt
-      ? (updatedText = `Updated At: ${useMemo(
-          () => formatDate(updatedAt),
-          [updatedAt]
-        )}`)
-      : (updatedText = `Created At: ${useMemo(
-          () => formatDate(createdAt),
-          [createdAt]
-        )}`);
 
   return (
     <li className={styles.contactCard}>
@@ -74,7 +62,14 @@ const ContactCard = ({ contact }: ContactCardProps) => {
         </div>
       </article>
       <footer>
-        <span>{cardFooterText}</span>
+        <span>
+          {updatedAt > createdAt
+            ? `Updated At: ${useMemo(() => formatDate(updatedAt), [updatedAt])}`
+            : `Created At: ${useMemo(
+                () => formatDate(createdAt),
+                [createdAt]
+              )}`}
+        </span>
       </footer>
     </li>
   );
